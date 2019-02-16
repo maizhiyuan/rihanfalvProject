@@ -1,0 +1,18 @@
+.flame{
+    width:450px;
+    height:727px;
+    border:1px solid#000;
+    
+}
+.collections{
+    position:relative;
+    left:20px;
+    top:176px;
+}
+.collection{
+    width:400px;
+    height:80px;
+    border:1px solid#000;
+    border-radius:7px;
+
+}

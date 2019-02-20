@@ -36,10 +36,7 @@ export class CollectionComponent implements OnInit {
            
            
          }
-        
-
-
-      
+     
          console.log(response);
        })
      

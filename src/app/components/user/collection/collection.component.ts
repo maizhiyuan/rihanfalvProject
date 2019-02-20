@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-collection',
@@ -7,9 +9,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionComponent implements OnInit {
 
-  public arr:any[]=[['陈顺兴等故意伤害案','2019-2-2'],['这是标题','2019-1-29'],['. 陈顺兴等故意伤害案','2019-1-24'],['这是标题','2019-1-2']]
-  constructor() { }
+ 
+
+  public arr:any[]=[];
+  public CollectionMsg:any[]=[];
+  public UserID:number=2;
+  
+
+
+  constructor( public http:HttpClient) { }
   ngOnInit() {
+    this.CollectionMsg.length=0
+    const httpOptions = {headers: new HttpHeaders({ 'Content-Type':'application/json'})};
+
+       var api ='http://localhost:4000/collection';
+       this.http.post(api,{"userid":this.UserID},httpOptions).subscribe((response:any)=>{
+
+         this.arr=response;
+         
+
+         for( var i=0;i<100;i++){
+           if(this.arr[i].CollectionTime.length<3){
+             break;
+           } 
+           this.CollectionMsg[i]=this.arr[i];
+           
+           
+         }
+        
+
+
+      
+         console.log(response);
+       })
+     
   }
+
 
 }

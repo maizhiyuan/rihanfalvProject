@@ -2,22 +2,25 @@
   
   <table class="collections" cellspacing="8px"  >  
 
-    <tr *ngFor="let aitem of arr">
+    <tr *ngFor="let aitem of CollectionMsg" >
       <div class="collection">
 
         <div class="title">
 
-          {{aitem[0]}}
+          {{aitem.CollectionTitle}}
         </div>
-        <div class="type">
+        <div class="content">
 
+          {{aitem.CollectionContent}}
         </div>
         <div class="time">
-           {{aitem[1]}}
+           {{aitem.CollectionTime}}
         </div>
        
       </div>
     </tr>
   </table>
+
+  
 </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { Router,NavigationExtras} from '@angular/router';
 
 
 @Component({
@@ -13,11 +14,11 @@ export class CollectionComponent implements OnInit {
 
   public arr:any[]=[];
   public CollectionMsg:any[]=[];
-  public UserID:number=2;
+  public UserID:number=1;
   
 
 
-  constructor( public http:HttpClient) { }
+  constructor(private router: Router, public http:HttpClient) { }
   ngOnInit() {
     this.CollectionMsg.length=0
     const httpOptions = {headers: new HttpHeaders({ 'Content-Type':'application/json'})};
@@ -40,6 +41,22 @@ export class CollectionComponent implements OnInit {
          console.log(response);
        })
      
+  }
+  specificContent(CollectionType,CollectionContentID){
+
+    if(CollectionType=="case"){
+      let Contentid: NavigationExtras = {             
+      queryParams: { ContentID:CollectionContentID },                
+    };       
+    this.router.navigate(['/case'],Contentid) ;
+    }
+    if(CollectionType=="thesis"){
+      let Contentid: NavigationExtras = {             
+      queryParams: { ContentID:CollectionContentID },                
+    };       
+    this.router.navigate(['/thesis'],Contentid) ;
+    }
+    
   }
 
 
